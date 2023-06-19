@@ -1,5 +1,6 @@
 # FlappyBird
 Test task for HuntIT
+
 Completion Time: 18 hours
 
 ### Особенности реализации:
@@ -12,7 +13,13 @@ Completion Time: 18 hours
 * Сохранение в одном файле с проверкой хэша для предотвращения взлома
 * Удобную обертку для ScriptableObject файла GameData, в котором хранятся данные об игре, на данный момент приходится подключать его вручную в редакторе
 * Более тщательно протестировать игру на наличие багов
+* Механику рекорда
 * Найти решения проблемы, при которой APK файл не устанавливается, но при этом через редактор установка происходит корректно
 * Более глубокий рефакторинг
 * Покрыть проект тестами, хотя в самом начале пытался, но пока, что не хватает опыта
 * Глубже разобраться в AppsFlyer, пока что научился только выводить ConversionData на экран
+
+####  Gameplay video: [Youtube](https://youtu.be/xWkuBC3G7jo)
+####  Download apk: [Google Drive](https://drive.google.com/file/d/18Pce3SOu3_E8gJGcu__G-dGdr9rDQ_QL/view?usp=drive_link)
+
+![Image Sequence_001_0000](https://github.com/ogg17/FlappyBird/assets/40641614/59149935-9259-4c06-a86f-93a5899b0d02)
