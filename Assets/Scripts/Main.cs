@@ -13,20 +13,23 @@ public class Main : MonoBehaviour
     private GameData _gameData;
     void Start()
     {
+        GameDataLoad();
         ConversionDataStartConfiguration();
     }
 
-    void ConversionDataStartConfiguration()
+    void GameDataLoad()
     {
         _gameData = Resources.Load(nameof(GameData)) as GameData;
+        if (_gameData != null) _gameData.Load();
+    }
+    void ConversionDataStartConfiguration()
+    {
         conversionDataScript.SetGameDataObj(_gameData);
-        AppsFlyer.getConversionData(conversionDataScript.name);
         EventsInstance.Events.GetConversionData += () => conversionDataLabel.SetText(_gameData.conversionData);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnApplicationQuit()
     {
-       // if (_gameData.conversionData != string.Empty) conversionDataLabel.SetText(_gameData.conversionData);
+        _gameData.Save();
     }
 }
