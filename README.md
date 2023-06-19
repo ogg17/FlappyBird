@@ -1,2 +1,2 @@
 # FlappyBird
- Test task for IT Hunt
+ Test task for HuntIT

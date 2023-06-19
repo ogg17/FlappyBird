@@ -14,8 +14,8 @@ public class ConversionDataScript : MonoBehaviour, IAppsFlyerConversionData
     public string macOSAppID;
     public bool isDebug;
     public bool getConversionData;
-    
-    void Start()
+
+    private void Start()
     {
         AppsFlyer.setIsDebug(isDebug);
 #if UNITY_WSA_10_0 && !UNITY_EDITOR
@@ -42,7 +42,7 @@ public class ConversionDataScript : MonoBehaviour, IAppsFlyerConversionData
     {
         print(conversionData);
         AppsFlyer.AFLog("didReceiveConversionData", conversionData);
-        Dictionary<string, object> conversionDataDictionary = AppsFlyer.CallbackStringToDictionary(conversionData);
+        var conversionDataDictionary = AppsFlyer.CallbackStringToDictionary(conversionData);
         _gameData.conversionData = ConversionDataDictToStr(conversionDataDictionary);
         EventsInstance.Events.GetConversionData.Invoke();
     }

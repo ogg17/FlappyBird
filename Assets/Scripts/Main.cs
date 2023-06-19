@@ -1,38 +1,49 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using AppsFlyerSDK;
 using EventSystem;
+using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
     [SerializeField] private ConversionDataScript conversionDataScript;
     [SerializeField] private TMProLabelScript conversionDataLabel;
 
-    private GameData _gameData;
-    void Start()
+    [SerializeField] private GameData gameData;
+
+    private void Start()
     {
         GameDataLoad();
         ConversionDataStartConfiguration();
-        EventsInstance.Events.EnableGame += () => { Debug.Log("ENABLE"); };
+        SetGameStates();
     }
 
-    void GameDataLoad()
+    private void GameDataLoad()
     {
-        _gameData = Resources.Load(nameof(GameData)) as GameData;
-        if (_gameData != null) _gameData.Load();
+        if (gameData != null) gameData.Load();
+        gameData.isGame = false;
+        gameData.Score = 0;
+    }
+
+    private void ConversionDataStartConfiguration()
+    {
+        conversionDataScript.SetGameDataObj(gameData);
+        EventsInstance.Events.GetConversionData += () => conversionDataLabel.SetText(gameData.conversionData);
+    }
+
+    private void SetGameStates()
+    {
+        EventsInstance.Events.StartGame += OnStartGame;
+        EventsInstance.Events.GameOver += OnGameOver;
     }
     
-    void ConversionDataStartConfiguration()
+    private void OnStartGame() => gameData.isGame = true;
+    private void OnGameOver()
     {
-        conversionDataScript.SetGameDataObj(_gameData);
-        EventsInstance.Events.GetConversionData += () => conversionDataLabel.SetText(_gameData.conversionData);
+        gameData.isGame = false;
+        gameData.Score = 0;
     }
-    
+
     private void OnApplicationQuit()
     {
-        _gameData.Save();
+        gameData.Save();
     }
 }

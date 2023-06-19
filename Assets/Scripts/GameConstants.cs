@@ -1,6 +1,6 @@
 public static class GameConstants
 {
     public const string ScrObjDirectory = "SO/";
-    public const string StartGameButtonTag = "StartGameButton";
-    public const string EnableGameButtonTag = "EnableGameButton";
+    public const string LoseTriggerTag = "LoseTrigger";
+    public const string EnterTriggerTag = "EnterTrigger";
 }

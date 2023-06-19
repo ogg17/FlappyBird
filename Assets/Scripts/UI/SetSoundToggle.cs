@@ -6,12 +6,14 @@ namespace UI
     [RequireComponent(typeof(Toggle))]
     public class SetSoundToggle : MonoBehaviour
     {
+        [SerializeField] private GameData gameData;
+        
         private Toggle _toggle;
-        void Start()
+
+        private void Start()
         {
             _toggle = GetComponent<Toggle>();
-            var data = Resources.Load(nameof(GameData)) as GameData;
-            _toggle.isOn = data!.isSound;
+            _toggle.isOn = gameData!.isSound;
         }
     }
 }

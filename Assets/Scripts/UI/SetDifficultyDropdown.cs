@@ -6,12 +6,14 @@ namespace UI
     [RequireComponent(typeof(TMP_Dropdown))]
     public class SetDifficultyDropdown : MonoBehaviour
     {
+        [SerializeField] private GameData gameData;
+        
         private TMP_Dropdown _dropdown;
-        void Start()
+
+        private void Start()
         {
             _dropdown = GetComponent<TMP_Dropdown>();
-            var data = Resources.Load(nameof(GameData)) as GameData;
-            _dropdown.value = (int)data!.difficulty;
+            _dropdown.value = (int)gameData!.difficulty;
         }
 
     }

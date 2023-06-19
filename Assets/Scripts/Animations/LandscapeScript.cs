@@ -1,22 +1,26 @@
 using UnityEngine;
 
-public class LandscapeScript : MonoBehaviour
+namespace Animations
 {
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private Vector3 endPosition;
-    [SerializeField] private Vector3 startPosition;
-
-    private Transform _transform;
-    void Start()
+    public class LandscapeScript : MonoBehaviour
     {
-        _transform = this.transform;
-        _transform.position = startPosition;
-    }
+        [SerializeField] private float speed = 1f;
+        [SerializeField] private Vector3 endPosition;
+        [SerializeField] private Vector3 startPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        _transform.Translate(Vector3.left * (speed * Time.deltaTime));
-        if (_transform.position.x <= endPosition.x) _transform.position = startPosition;
+        private Transform _transform;
+
+        private void Start()
+        {
+            _transform = this.transform;
+            _transform.position = startPosition;
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            _transform.Translate(Vector3.left * (speed * Time.deltaTime));
+            if (_transform.position.x <= endPosition.x) _transform.position = startPosition;
+        }
     }
 }

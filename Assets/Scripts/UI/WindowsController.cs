@@ -7,10 +7,12 @@ namespace UI
     {
         [SerializeField] private GameObject gameWindow;
         [SerializeField] private GameObject gameOverWindow;
-        void Start()
+
+        private void Start()
         {
             EventsInstance.Events.StartGame += OnStartGame;
             EventsInstance.Events.EnableGame += OnEnableGame;
+            EventsInstance.Events.GameOver += OnGameOver;
         }
 
         private void OnStartGame() => gameWindow.SetActive(false);

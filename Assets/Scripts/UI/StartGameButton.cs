@@ -7,10 +7,10 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class StartGameButton : MonoBehaviour
     {
-        void Start()
+        private void Start()
         {
             var startButton = GetComponent<Button>();
-            startButton.onClick.AddListener(EventsInstance.Events.StartGame.Invoke);
+            startButton.onClick.AddListener(() => { EventsInstance.Events.StartGame.Invoke(); });
         }
     }
 }

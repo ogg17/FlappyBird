@@ -9,12 +9,12 @@ namespace UI
     {
         [SerializeField] private float tapDelay;
         
-        private DateTime _lastTime = DateTime.Now;
+        private float _lastTime;
         public void OnPointerClick(PointerEventData eventData)
         {
-            var milliseconds = DateTime.Now - _lastTime;
-            if (!(milliseconds.TotalMilliseconds > tapDelay)) return;
-            _lastTime = DateTime.Now;
+            var milliseconds = Time.time * 1000 - _lastTime;
+            if (!(milliseconds > tapDelay)) return;
+            _lastTime = Time.time * 1000;
             EventsInstance.Events.OnTap.Invoke();
         }
     }
