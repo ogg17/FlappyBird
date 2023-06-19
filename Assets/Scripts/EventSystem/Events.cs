@@ -5,10 +5,13 @@ namespace EventSystem
 {
     public class Events
     {
-        public Action TestEvent = () => {};
-        public Action OnTap = () => {};
-        public Action GetConversionData = () => {};
-        public Action SoundChange = () => {};
-        public Action DifficultyChange = () => {};
+        public Action TestEvent = () => { };
+        public Action OnTap = () => { };
+        public Action EnableGame = () => { };
+        public Action StartGame = () => { };
+        public Action GameOver = () => { };
+        public Action GetConversionData = () => { };
+        public Action SoundChange = () => { };
+        public Action DifficultyChange = () => { };
     }
 }
