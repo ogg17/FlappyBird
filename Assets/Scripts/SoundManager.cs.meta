@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2b6c19aa799be3e4e8ea242c122fb7d7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameData: {fileID: 11400000, guid: 7c192578e2da5e94a91903e001878168, type: 2}
+  - soundtrack: {fileID: 8300000, guid: 8bee918ce106bb9448f7f550c6de065e, type: 3}
+  - tap: {fileID: 8300000, guid: 5fbc9dcfa9d3ffd4290274e60643b2ff, type: 3}
+  - lose: {fileID: 8300000, guid: 9f5321d1afd2c5a4a9b52663e55e3e6a, type: 3}
+  - score: {fileID: 8300000, guid: cf133891c139ab14a8b20003545a82e5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
