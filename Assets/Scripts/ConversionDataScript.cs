@@ -7,7 +7,7 @@ using UnityEngine;
 public class ConversionDataScript : MonoBehaviour, IAppsFlyerConversionData
 {
     private GameData _gameData;
-    
+
     public string devKey;
     private readonly string _appID = null;
     public string UWPAppID;
@@ -28,16 +28,9 @@ public class ConversionDataScript : MonoBehaviour, IAppsFlyerConversionData
 
         AppsFlyer.startSDK();
     }
-    
-    public void SetGameDataObj(GameData data)
-    {
-        _gameData = data;
-    }
 
-    void Update()
-    {
-    }
-    
+    public void SetGameDataObj(GameData data) => _gameData = data;
+
     public void onConversionDataSuccess(string conversionData)
     {
         print(conversionData);
@@ -47,29 +40,18 @@ public class ConversionDataScript : MonoBehaviour, IAppsFlyerConversionData
         EventsInstance.Events.GetConversionData.Invoke();
     }
 
-    private string ConversionDataDictToStr(Dictionary<string, object> data)
+    private static string ConversionDataDictToStr(Dictionary<string, object> data)
     {
         var str = new StringBuilder();
         foreach (var item in data)
             str.Append(item.Key).Append(": ").Append(item.Value).AppendLine();
-        
+
         return str.ToString();
     }
 
-    public void onConversionDataFail(string error)
-    {
-        AppsFlyer.AFLog("didReceiveConversionDataWithError", error);
-    }
+    public void onConversionDataFail(string error) => AppsFlyer.AFLog("didReceiveConversionDataWithError", error);
 
-    public void onAppOpenAttribution(string attributionData)
-    {
-        AppsFlyer.AFLog("onAppOpenAttribution", attributionData);
-        Dictionary<string, object> attributionDataDictionary = AppsFlyer.CallbackStringToDictionary(attributionData);
-        // add direct deeplink logic here
-    }
+    public void onAppOpenAttribution(string attributionData) => AppsFlyer.AFLog("onAppOpenAttribution", attributionData);
 
-    public void onAppOpenAttributionFailure(string error)
-    {
-        AppsFlyer.AFLog("onAppOpenAttributionFailure", error);
-    }
+    public void onAppOpenAttributionFailure(string error) => AppsFlyer.AFLog("onAppOpenAttributionFailure", error);
 }

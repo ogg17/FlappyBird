@@ -6,12 +6,13 @@ namespace Animations
     public class FlyAnimationBirdScript : MonoBehaviour
     {
         [SerializeField] private float fallValue;
-    
+
         private Rigidbody2D _rigidbody2D;
         private Transform _transform;
 
         private Vector3 _fall;
         private Vector3 _rise;
+
         private void Start()
         {
             _transform = transform;

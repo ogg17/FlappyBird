@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   conversionData: 
-  isSound: 1
+  isSound: 0
   difficulty: 0
-  isGame: 0
+  isGame: 1
+  record: 0

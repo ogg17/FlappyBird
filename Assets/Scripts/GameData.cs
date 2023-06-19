@@ -1,7 +1,5 @@
 using EventSystem;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = GameConstants.ScrObjDirectory + nameof(GameData), fileName = nameof(GameData))]
 public class GameData : ScriptableObject
@@ -28,18 +26,20 @@ public class GameData : ScriptableObject
     {
         isSound = value;
         EventsInstance.Events.SoundChange.Invoke();
+        PlayerPrefs.SetInt(nameof(isSound), isSound ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public void SetDifficulty(int value)
     {
         difficulty = value;
         EventsInstance.Events.DifficultyChange.Invoke();
+        PlayerPrefs.SetInt(nameof(difficulty), difficulty);
+        PlayerPrefs.Save();
     }
 
     public void Save()
     {
-        PlayerPrefs.SetInt(nameof(isSound), isSound ? 1 : 0);
-        PlayerPrefs.SetInt(nameof(difficulty), difficulty);
         PlayerPrefs.SetInt(nameof(record), record);
         PlayerPrefs.Save();
     }

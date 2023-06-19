@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using EventSystem;
 using UnityEngine;
 
@@ -19,7 +17,8 @@ public class SoundManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = soundtrack;
-        OnIsSoundChange();
+        if (gameData.isSound)
+            _audioSource.Play();
 
         EventsInstance.Events.GameOver += OnGameOver;
         EventsInstance.Events.OnTap += OnTap;
@@ -43,13 +42,13 @@ public class SoundManager : MonoBehaviour
 
     private void OnScoreChange(int s)
     {
-        if (gameData.isSound)
+        if (gameData.isGame && gameData.isSound)
             _audioSource.PlayOneShot(score);
     }
 
     private void OnTap()
     {
-        if (gameData.isSound)
+        if (gameData.isGame && gameData.isSound)
             _audioSource.PlayOneShot(tap);
     }
 }

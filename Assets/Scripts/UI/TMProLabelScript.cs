@@ -8,14 +8,8 @@ namespace UI
     {
         private TextMeshProUGUI _textMesh;
 
-        private void Start()
-        {
-            _textMesh = GetComponent<TextMeshProUGUI>();
-        }
+        private void Start() => _textMesh = GetComponent<TextMeshProUGUI>();
 
-        public void SetText(string text)
-        {
-            _textMesh.SetText(text);
-        }
+        public void SetText(string text) => _textMesh.SetText(text);
     }
 }

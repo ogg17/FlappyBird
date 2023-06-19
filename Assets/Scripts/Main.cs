@@ -1,3 +1,7 @@
+// Author: Gavrilov Vsevolod
+// Email: vsevolod.gavrilov.17@gmail.com
+// Completion Time: 18 hours
+
 using EventSystem;
 using UI;
 using UnityEngine;
@@ -6,21 +10,14 @@ public class Main : MonoBehaviour
 {
     [SerializeField] private ConversionDataScript conversionDataScript;
     [SerializeField] private TMProLabelScript conversionDataLabel;
-
     [SerializeField] private GameData gameData;
 
     private void Start()
     {
-        GameDataLoad();
+        if (gameData != null) gameData.Load();
         ConversionDataStartConfiguration();
         SetGameStates();
-    }
-
-    private void GameDataLoad()
-    {
-        if (gameData != null) gameData.Load();
-        gameData.isGame = false;
-        gameData.Score = 0;
+        Application.targetFrameRate = 60;
     }
 
     private void ConversionDataStartConfiguration()
@@ -33,17 +30,24 @@ public class Main : MonoBehaviour
     {
         EventsInstance.Events.StartGame += OnStartGame;
         EventsInstance.Events.GameOver += OnGameOver;
+        EventsInstance.Events.EnableGame += OnEnableGame;
     }
-    
+
+    private void OnEnableGame()
+    {
+        gameData.isGame = false;
+        gameData.Score = 0;
+    }
+
     private void OnStartGame() => gameData.isGame = true;
+
     private void OnGameOver()
     {
         gameData.isGame = false;
         gameData.Score = 0;
     }
 
-    private void OnApplicationQuit()
-    {
-        gameData.Save();
-    }
+    private void OnApplicationPause(bool pauseStatus) => gameData.Save();
+
+    private void OnApplicationQuit() => gameData.Save();
 }

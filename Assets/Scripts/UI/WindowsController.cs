@@ -16,6 +16,7 @@ namespace UI
         }
 
         private void OnStartGame() => gameWindow.SetActive(false);
+
         private void OnEnableGame()
         {
             gameWindow.SetActive(true);
@@ -23,6 +24,5 @@ namespace UI
         }
 
         private void OnGameOver() => gameOverWindow.SetActive(true);
-
     }
 }

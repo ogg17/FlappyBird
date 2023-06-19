@@ -1,4 +1,3 @@
-using System;
 using EventSystem;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ public class BirdScript : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector3 _startPosition;
     
-
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -31,20 +29,11 @@ public class BirdScript : MonoBehaviour
         transform.position = _startPosition;
     }
 
-    private void OnStartGame()
-    {
-        _rigidbody2D.simulated = true;
-    }
+    private void OnStartGame() => _rigidbody2D.simulated = true;
 
-    private void OnGameOver()
-    {
-        _rigidbody2D.simulated = false;
-    }
+    private void OnGameOver() => _rigidbody2D.simulated = false;
 
-    private void Rise()
-    {
-        _rigidbody2D.AddForce(riseStrength * Vector2.up);
-    }
+    private void Rise() => _rigidbody2D.AddForce(riseStrength * Vector2.up);
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -52,7 +41,7 @@ public class BirdScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case GameConstants.LoseTriggerTag:
-                //EventsInstance.Events.GameOver.Invoke();
+                EventsInstance.Events.GameOver.Invoke();
                 break;
             case GameConstants.EnterTriggerTag:
                 gameData.Score++;
