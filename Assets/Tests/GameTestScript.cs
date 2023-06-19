@@ -1,6 +1,7 @@
 using System.Collections;
 using EventSystem;
 using NUnit.Framework;
+using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -29,6 +30,12 @@ namespace Tests
             {
                 test = true;
             }
+        }
+
+        [Test]
+        public void ConversionDataTest()
+        {
+            Assert.True((Resources.Load(nameof(GameData)) as GameData)?.conversionData != string.Empty);
         }
     }
 }

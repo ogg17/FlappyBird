@@ -9,7 +9,7 @@ namespace EventSystem
         private static Events _events;
         public static Events Events
         {
-            get => _events ??= Resources.Load(nameof(Events)) as Events;
+            get => _events ??= new Events();
             private set => _events = value;
         }
     }
